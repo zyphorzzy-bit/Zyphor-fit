@@ -1,1 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="Zyphor Fit - Seu treino, seu ritmo.">
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Zyphor Fit</title>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <!-- CABEÇALHO -->
+        <header class="topbar">
+            <div class="logo">
+                ZYPHOR <span>FIT</span>
+            </div>
+
+            <button class="icon-button" id="settingsButton">
+                ⚙
+            </button>
+        </header>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main>
+
+            <!-- INÍCIO -->
+            <section id="homeScreen" class="screen active">
+
+                <div class="welcome">
+                    <p>Bom treino.</p>
+                    <h1>Vamos começar?</h1>
+                </div>
+
+                <div class="today-card">
+                    <div>
+                        <span class="card-label">TREINO DE HOJE</span>
+                        <h2>Corpo inteiro</h2>
+                        <p>≈ 30 minutos</p>
+                    </div>
+
+                    <button class="primary-button" id="startToday">
+                        COMEÇAR
+                    </button>
+                </div>
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <span>Treinos</span>
+                        <strong id="workoutCount">0</strong>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>Tempo</span>
+                        <strong id="totalTime">0 min</strong>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>Sequência</span>
+                        <strong id="streak">0 dias</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- TREINOS -->
+            <section id="workoutsScreen" class="screen">
+
+                <div class="page-title">
+                    <span>SEUS</span>
+                    <h1>Treinos</h1>
+                </div>
+
+                <div class="workout-list">
+
+                    <button class="workout-card" data-workout="peito">
+                        <div>
+                            <span>01</span>
+                            <h2>Peito</h2>
+                            <p>Força e resistência</p>
+                        </div>
+                        <strong>›</strong>
+                    </button>
+
+                    <button class="workout-card" data-workout="costas">
+                        <div>
+                            <span>02</span>
+                            <h2>Costas</h2>
+                            <p>Força e resistência</p>
+                        </div>
+                        <strong>›</strong>
+                    </button>
+
+                    <button class="workout-card" data-workout="bracos">
+                        <div>
+                            <span>03</span>
+                            <h2>Braços</h2>
+                            <p>Bíceps e tríceps</p>
+                        </div>
+                        <strong>›</strong>
+                    </button>
+
+                    <button class="workout-card" data-workout="pernas">
+                        <div>
+                            <span>04</span>
+                            <h2>Pernas</h2>
+                            <p>Força e estabilidade</p>
+                        </div>
+                        <strong>›</strong>
+                    </button>
+
+                    <button class="workout-card" data-workout="abdomen">
+                        <div>
+                            <span>05</span>
+                            <h2>Abdômen</h2>
+                            <p>Core e estabilidade</p>
+                        </div>
+                        <strong>›</strong>
+                    </button>
+
+                    <button class="workout-card" data-workout="corpo">
+                        <div>
+                            <span>06</span>
+                            <h2>Corpo inteiro</h2>
+                            <p>Treino completo</p>
+                        </div>
+                        <strong>›</strong>
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- PROGRESSO -->
+            <section id="progressScreen" class="screen">
+
+                <div class="page-title">
+                    <span>SEU</span>
+                    <h1>Progresso</h1>
+                </div>
+
+                <div class="progress-main">
+
+                    <div class="big-stat">
+                        <span>TREINOS REALIZADOS</span>
+                        <strong id="progressWorkouts">0</strong>
+                    </div>
+
+                    <div class="progress-row">
+
+                        <div class="progress-card">
+                            <span>Tempo total</span>
+                            <strong id="progressTime">0 min</strong>
+                        </div>
+
+                        <div class="progress-card">
+                            <span>Sequência</span>
+                            <strong id="progressStreak">0 dias</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- MÚSICA -->
+            <section id="musicScreen" class="screen">
+
+                <div class="page-title">
+                    <span>SUA</span>
+                    <h1>Música</h1>
+                </div>
+
+                <div class="music-box">
+
+                    <div class="music-icon">
+                        ♪
+                    </div>
+
+                    <h2 id="musicName">
+                        Nenhuma música
+                    </h2>
+
+                    <p>Escolha uma música do seu aparelho.</p>
+
+                    <input
+                        type="file"
+                        id="musicInput"
+                        accept="audio/*"
+                    >
+
+                    <audio id="audioPlayer" controls></audio>
+
+                </div>
+
+            </section>
+
+
+            <!-- TREINO ATIVO -->
+            <section id="activeWorkoutScreen" class="screen">
+
+                <button class="back-button" id="backFromWorkout">
+                    ← Voltar
+                </button>
+
+                <div class="active-workout">
+
+                    <span id="activeWorkoutCategory">
+                        TREINO
+                    </span>
+
+                    <h1 id="activeWorkoutName">
+                        Corpo inteiro
+                    </h1>
+
+                    <div class="exercise-box">
+
+                        <span id="exerciseNumber">
+                            EXERCÍCIO 1
+                        </span>
+
+                        <h2 id="exerciseName">
+                            Flexão
+                        </h2>
+
+                        <p id="exerciseInfo">
+                            3 séries × 10 repetições
+                        </p>
+
+                        <button
+                            class="primary-button"
+                            id="completeExercise"
+                        >
+                            CONCLUIR SÉRIE
+                        </button>
+
+                    </div>
+
+                    <div class="timer-box">
+
+                        <span>DESCANSO</span>
+
+                        <strong id="timer">
+                            01:00
+                        </strong>
+
+                        <div class="timer-buttons">
+
+                            <button id="startTimer">
+                                INICIAR
+                            </button>
+
+                            <button id="skipTimer">
+                                PULAR
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- CONFIGURAÇÕES -->
+            <section id="settingsScreen" class="screen">
+
+                <div class="page-title">
+                    <span>APP</span>
+                    <h1>Configurações</h1>
+                </div>
+
+                <div class="settings-list">
+
+                    <div class="setting">
+                        <div>
+                            <strong>Notificações</strong>
+                            <p>Lembretes de treino</p>
+                        </div>
+
+                        <button id="notificationButton">
+                            ATIVAR
+                        </button>
+                    </div>
+
+                    <div class="setting">
+                        <div>
+                            <strong>Vibração</strong>
+                            <p>Vibrar durante o treino</p>
+                        </div>
+
+                        <button id="vibrationButton">
+                            ATIVAR
+                        </button>
+                    </div>
+
+                    <div class="setting danger">
+                        <div>
+                            <strong>Apagar progresso</strong>
+                            <p>Remove os dados salvos neste aparelho.</p>
+                        </div>
+
+                        <button id="clearData">
+                            APAGAR
+                        </button>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- MENU INFERIOR -->
+        <nav class="bottom-nav">
+
+            <button class="nav-button active" data-screen="homeScreen">
+                <span>⌂</span>
+                <small>Início</small>
+            </button>
+
+            <button class="nav-button" data-screen="workoutsScreen">
+                <span>♜</span>
+                <small>Treinos</small>
+            </button>
+
+            <button class="nav-button" data-screen="progressScreen">
+                <span>◈</span>
+                <small>Progresso</small>
+            </button>
+
+            <button class="nav-button" data-screen="musicScreen">
+                <span>♪</span>
+                <small>Música</small>
+            </button>
+
+        </nav>
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+              </html>
